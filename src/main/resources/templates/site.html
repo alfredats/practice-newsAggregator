@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xlmns:th="https://thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,600&family=Space+Mono&display=swap" rel="stylesheet"> 
+    <link href="/styles/style.css" th:href="@{/styles/style.css}" rel="stylesheet">
+    <title>SG NEWS</title>
+</head>
+<body>
+    <div class="px-5 my-3">
+        <h1 style="font-family:'Kanit', sans-serif;">SG NEWS</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 order-md-2 border border-dark">
+               <p>Search bar</p> 
+            </div>
+            <div class="col-md-8 order-md-1">
+                <div class="article my-2 img-thumbnail" th:each="article : ${articles}">
+                    <a class="row" target="_blank" th:href="@{${article.url}}">
+                        <img 
+                            class="col-3 my-auto ml-1"
+                            alt="" srcset="" width="100%" height="auto"
+                            th:src="@{${article.urlImage}}" 
+                        >
+                        <div class="col-9">
+                            <div class="row">
+                                <div class="col-12 my-1 fw-bold" style="font-size:.8rem;">[[${article.title}]]</div>
+                                <div th:unless="${article.author == null}" class="noDeco col-12 fst-italic" style="font-size:.5rem;">[[${article.author}]]</div>
+                                <div class="noDeco col mt-1">
+                                    <p class="" style="font-size:.6rem;">
+                                    [[${article.description}]]
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="w-100 d-none d-md-block"></div>
+        </div>
+
+    </div>
+</body>
+</html>
