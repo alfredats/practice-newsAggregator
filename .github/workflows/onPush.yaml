@@ -2,6 +2,7 @@ name: onPush
 on: [push]
 env:
   API_KEY: ${{ secrets.api_key }}
+  SPRING_DATASOURCE_PASSWORD: ${{ secrets.spring_datasource_password }}
 jobs:
   compile-test-deploy:
     runs-on: ubuntu-latest
